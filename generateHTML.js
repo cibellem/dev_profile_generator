@@ -188,7 +188,7 @@ function generateHTML(data) {
             <h5></h5>
             <nav class="links-nav">
                <a class="nav-link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/${data.location}"><i class="fas fa-location-arrow"></i> ${data.location}</a>
-               <a class="nav-link" target="_blank" href=${data.html_url}><i class="fab fa-github-alt"></i> GitHub</a>
+               <a class="nav-link" target="_blank" href="${data.html_url}"><i class="fab fa-github-alt"></i> GitHub</a>
                
             </nav>
          </div>
@@ -217,7 +217,7 @@ function generateHTML(data) {
                <div class="col">
                <div class="card">
                   <h3>GitHub Stars</h3>
-                   <h4>${data.star_count}</h4>
+                   <h4>${data.stars}</h4>
                   </div>
                </div>
                 <div class="col">

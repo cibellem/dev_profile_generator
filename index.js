@@ -26,27 +26,41 @@ inquirer.prompt([
 
     axios.get(queryUrl).then(function ({ data }) {
 
-        const params = {
-            color: color,
-            username: username,
-            avatar_url: data.avatar_url,
-            name: data.name,
-            location: data.location,
-            bio: data.bio,
-            publicrepo: data.public_repos,
-            followers: data.followers,
-            following: data.following,
-            github: data.login
-        }
+        axios.get(queryUrlStarred)
+            .then(function (res) {
 
-        pdf.create(generateHtml(params)).toFile('./devportfolio.pdf', function (err, res) {
-            if (err) return console.log(err);
-            console.log(res);
+                //here I use the map array method to loop through the object array and to retur me the elements in the stargazers_count 
+                const starCount = res.data.map(element => {
+                    return element.stargazers_count
 
-        })
+
+                })
+                const stars = starCount.length
+
+
+                const params = {
+                    color: color,
+                    username: username,
+                    avatar_url: data.avatar_url,
+                    name: data.name,
+                    location: data.location,
+                    bio: data.bio,
+                    public_repos: data.public_repos,
+                    followers: data.followers,
+                    following: data.following,
+                    github: data.login,
+                    stars: stars,// why is coming back as undefined? 
+                }
+
+                pdf.create(generateHtml(params)).toFile('./devportfolio.pdf', function (err, res) {
+                    if (err) return console.log(err);
+                    console.log(res);
+
+                })
+
+
+            })
 
 
     })
-
-
 })
