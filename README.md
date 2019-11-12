@@ -4,4 +4,4 @@ This app will dynamically generates a PDF profile from a GitHub username and col
 
 
 
-![Farmers Market Finder Demo](demo-gif.gif/)
+![Farmers Market Finder Demo](devgen.gif/)
